@@ -1,0 +1,1 @@
+For this challenge I chose to use python.  To run this program in terminal, use the top level directory as the first argument. I am a little nervous for this program because of its nested loops, but I am unsure of a way to reduce the run time on larger file systems. 

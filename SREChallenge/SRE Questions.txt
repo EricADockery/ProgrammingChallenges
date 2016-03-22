@@ -1,0 +1,22 @@
+Site Reliability Engineer Exercise 
+
+Questions:
+Write a program in Python that:
+  - Opens file ‘data.csv’
+  - Sorts data by price
+  - Prints results to standard out
+  - After you are done submit source and output
+How do you redirect standard out to standard error in linux?
+What command shows you all files open by root?
+Why does that command shows you TCP and UDP sockets?
+What are some file system mount options that can improve performance?
+  - What would you sacrifice using these mount options?
+  - Why is that OK?
+What command shows you how busy the file system is?
+Explain what load average is?
+Write a sample maintenance notification email
+  - The service will still be up
+  - Performance of service may be very bad at times
+  - The maintenance will begin at midnight
+  - The maintenance should take 1 hours but there is a chance of the maintenance taking longer
+

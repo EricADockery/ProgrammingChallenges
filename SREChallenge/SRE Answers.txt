@@ -1,0 +1,81 @@
+﻿Site Reliability Engineer Exercise
+Answers:
+Write a program in Python that:
+  - Opens file ‘data.csv’
+  - Sorts data by price
+  - Prints results to standard out
+  - After you are done submit source and output
+	
+	(See Attached code) 
+** special note** 
+	The program can save the code in csv format if you comment out line 48 as the prompt
+   didn't specify I did not want to create more csv files or modify the orginal. Also, if you
+   uncomment fileName = input(... you can change the file name as long as you comment out the 
+   fileName =  "data.csv"
+How do you redirect standard out to standard error in linux?
+	 grep da * 1>&2
+	The stdout portion of the command is sent to stderr. This may be noticed in different ways.
+What command shows you all files open by root?
+	lsof -u root
+Why does that command shows you TCP and UDP sockets?
+	This is basic networking. The UDP breaks data down into packets but it does not ensure that the data reaches its destination, or that reaches it only once. The UDP sockets are managed by root to ensure that messages such as audio and video conferencing, time synchronization, network-based filesystems, and logging systems are sending their messages clearly.  TCP is designed to make data transfer over the Internet as reliable as possible. This stream of data is broken up into individual packets by the operating system aka root processes.
+What are some file system mount options that can improve performance?
+  - What would you sacrifice using these mount options?
+  - Why is that OK?
+	noatime:
+		Pros:
+•	Fully disables writing file access times to the drive every time you read a file. This works well for most applications excluding the rare few like Mutt.
+		Cons:
+•	can impact drive performance
+Strictatime
+	Pros:
+•	Updates the atime of the files every time they are accessed.
+Cons:
+•	Even reading a file from the page cache results in a write.
+Nodiratime
+	Pros:
+•	Disables the writing of file access times only for directories while other files still get access times written.
+Cons:
+•	Impact drive performance
+Relatime:
+	Pros:
+•	Enables the writing of file access times only when the file is being modified. 
+Cons:
+•	Impact drive performance. 
+These four allow the system to relieve some of the write time that occurs on the server by limited what is written at what time. This can be useful on heavy loads hit the system.
+	Data=writeback:
+		Pros: 
+•	improves speed
+		Cons:
+•	corrupt data during power loss
+This is effective for when a system will not have unexpected power loss.
+	Notail:
+		Pros:
+•	Improves speed.
+Cons:
+•	Increases the space used by the filesystem.
+You can reduce this increase by putting the journal and data on separate drives. 
+What command shows you how busy the file system is?
+•	vmstat 1 will poll overall information every second, including IO load 
+•	iostat 1 will provide information more directly focused on IO.
+•	iotop will provide this information on a per-process level, assuming a modern kernel with appropriate configuration.
+•	dstat is a Swiss-army-knife tool combining information available from many of the above.
+Explain what load average is?
+	The average system load, measure of the amount of computational work that a computer system preforms,
+ over a period of time. It appears in the form of three number that represent the system load 
+during the last one, five, and fifteen minute periods.  It is queried in most Unix shells by running 
+the uptime command. 
+Write a sample maintenance notification email
+  - The service will still be up
+  - Performance of service may be very bad at times
+  - The maintenance will begin at midnight
+  - The maintenance should take 1 hours but there is a chance of the maintenance taking longer
+	
+Subject: Server Maintenance Notification – (Date )
+
+This is to notify you that on (Date) we will be preforming system updates on the server. 
+The system will stay up, but you may experience times when service is not optimal. This maintenance
+will begin at Midnight PT of (Date), and it should last approximately 1 hour. Due to the number of enhancements
+ that we will be preforming, the maintenance may take longer than scheduled. 
+
+Thank you.
